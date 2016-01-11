@@ -1,0 +1,30 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Member Since</th>
+      {{#if showSubscriberInfo}}
+        <th>Subscriber Since</th>
+        <th>Expires</th>
+      {{/if}}
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each customers as |customer|}}
+      <tr>
+        <td>{{customer.name}}</td>
+        <td>{{customer.location}}</td>
+        <td>{{moment-format customer.signupDate "MM/DD/YYYY"}}</td>
+        {{#if showSubscriberInfo}}
+          <td>{{moment-format customer.subscriptionDate "MM/DD/YYYY"}}</td>
+          <td>{{moment-from-now customer.expirationDate}}</td>
+        {{/if}}
+        <td>
+          <button {{action 'remove' customer}}>Remove</button>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

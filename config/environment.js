@@ -4,6 +4,8 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'sodashop',
     environment: environment,
+    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
+    firebase: 'https://ibsodashop.firebaseio.com/',
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
@@ -18,6 +20,8 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+
+  ENV.APP.ENABLE_DS_FILTER = true;
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
